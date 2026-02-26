@@ -33,12 +33,12 @@ geography_churn_percent = geography_churn.map(lambda x: f"{x:.2f}%")
 print(" Churn rate by Geography")
 print(geography_churn_percent)
 
-# # Customer Churn by Geography and Active Customers
+## Customer Churn by Geography and Active Customers
 active_churn = df.groupby(['IsActiveMember', 'Geography'])['Exited'].mean() * 100
 active_churn = active_churn.map(lambda x: f"{x:.2f}%")
 print(active_churn.unstack())
 
-p_chart2 = sns.barplot(data=df, x='Geography', y=df['Exited']*100, hue='IsActiveMember', ci=None, palette=["salmon", "cornflowerblue"])
+p_chart2 = sns.barplot(data=df, x='Geography', y=df['Exited']*100, hue='IsActiveMember', errorbar=None, palette=["salmon", "cornflowerblue"])
 
 for container in p_chart2.containers:
     p_chart2.bar_label(container, fmt="%.1f%%")
@@ -66,8 +66,8 @@ plt.xlabel("Number of product")
 plt.show()
 
 # Chart 4: Customer Churn by Age Group
-sns.kdeplot(df[df['Exited'] == 0]['Age'], shade=True, label='Retained', color='cornflowerblue')
-sns.kdeplot(df[df['Exited'] == 1]['Age'], shade=True, label='Exited', color='salmon')
+sns.kdeplot(df[df['Exited'] == 0]['Age'], fill=True, label='Retained', color='cornflowerblue')
+sns.kdeplot(df[df['Exited'] == 1]['Age'], fill=True, label='Exited', color='salmon')
 
 plt.title('Age Distribution')
 plt.xlabel('Age')

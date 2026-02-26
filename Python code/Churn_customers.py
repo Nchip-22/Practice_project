@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns 
 
-df = pd.read_csv(r"data/Churn_Modelling.csv")
+df = pd.read_csv(r"Data\Churn_Modelling.csv")
 
 #Chart 1: Number of Retained and Exited Customers
 
@@ -74,4 +74,5 @@ plt.xlabel('Age')
 plt.ylabel('Density')
 plt.legend()
 plt.show()
+
 
